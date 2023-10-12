@@ -1,0 +1,69 @@
+<ion-content [fullscreen]="true">
+    <div class="h-fit min-h-full dark:bg-slate-900">
+        <div class="bg-amarillo-ppal py-16">
+            <h1 class="text-center text-white font-sans font-bold text-4xl">
+                ¡Bienvenido!
+            </h1>
+        </div>
+        <div class="mt-10 max-w-xl m-auto px-10">
+            <div class="mt-2">
+                <label for="email" class="dark:text-white text-base font-normal"
+                    >Correo electrónico:</label
+                >
+                <div
+                    class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                >
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder=""
+                        id=""
+                        [(ngModel)]="correo"
+                        class="w-full dark:text-white dark:placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                    />
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <label for="email" class="dark:text-white text-base font-normal"
+                    >Contraseña:</label
+                >
+                <div
+                    class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                >
+                    <input
+                        type="password"
+                        name="email"
+                        placeholder=""
+                        id=""
+                        [(ngModel)]="contrasena"
+                        class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                    />
+                </div>
+            </div>
+            <a
+                (click)="recuperarContrasena()"
+                class="mt-6 text-amarillo-ppal flex justify-end text-sm font-normal underline"
+                >¿Olvidaste tu contraseña?</a
+            >
+            <button
+                (click)="inicioSesion()"
+                class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+            >
+                Iniciar sesión
+            </button>
+
+            <div class="relative flex items-center mt-8">
+                <div class="border h-0 w-2/4 border-stone-300"></div>
+                <div class="text-stone-300 px-4 text-sm font-normal">O</div>
+                <div class="border h-0 w-2/4 border-stone-300"></div>
+            </div>
+            <button
+                (click)="registro()"
+                class="border border-indigo-900 rounded-lg text-center text-amarillo-ppal bg-slate-900 dark:bg-white text-base font-semibold w-full py-3 mt-9"
+            >
+                Registrate
+            </button>
+        </div>
+    </div>
+</ion-content>

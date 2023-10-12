@@ -1,0 +1,125 @@
+<ion-content [fullscreen]="true">
+    <div class="h-fit min-h-full dark:bg-slate-900">
+        <div class="h-full w-full">
+            <div class="bg-amarillo-ppal py-12">
+                <h1 class="text-center text-white font-sans font-bold text-4xl">
+                    Registro
+                </h1>
+                <h2
+                    class="text-center text-white font-sans font-light mt-2"
+                    (click)="inicioSesion()"
+                >
+                    volver
+                </h2>
+            </div>
+            <div class="mt-10 max-w-xl m-auto">
+                <form action="" class="px-10">
+                    <div class="mt-2">
+                        <label
+                            for="nombre"
+                            class="dark:text-white text-base font-normal"
+                            >Nombre</label
+                        >
+                        <div
+                            class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                        >
+                            <input
+                                type="text"
+                                name="nombre"
+                                placeholder=""
+                                id=""
+                                [(ngModel)]="usuario.nombre"
+                                class="w-full dark:text-white dark:placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <label
+                            for="apellido"
+                            class="dark:text-white text-base font-normal"
+                            >Apellido(s)</label
+                        >
+                        <div
+                            class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                        >
+                            <input
+                                type="text"
+                                name="apellido"
+                                placeholder=""
+                                id=""
+                                [(ngModel)]="usuario.apellido"
+                                class="w-full dark:text-white dark:placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <label
+                            for="email"
+                            class="dark:text-white text-base font-normal"
+                            >Correo electrónico</label
+                        >
+                        <div
+                            class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                        >
+                            <input
+                                type="text"
+                                name="correo"
+                                placeholder=""
+                                id=""
+                                [(ngModel)]="usuario.correo"
+                                class="w-full dark:text-white dark:placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label
+                            for="password"
+                            class="dark:text-white text-base font-normal"
+                            >Contraseña</label
+                        >
+                        <div
+                            class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                        >
+                            <input
+                                type="password"
+                                name="passwordtxt"
+                                placeholder=""
+                                id=""
+                                [(ngModel)]="contrasena"
+                                class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label
+                            for="confirmpassword"
+                            class="dark:text-white text-base font-normal"
+                            >Confirmar Contraseña</label
+                        >
+                        <div
+                            class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                        >
+                            <input
+                                type="password"
+                                name="confirmpasswordtxt"
+                                placeholder=""
+                                id=""
+                                [(ngModel)]="confirmarContrasena"
+                                class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                            />
+                        </div>
+                    </div>
+                    <div class="relative flex items-center mt-8">
+                        <div class="border h-0 w-full border-stone-300"></div>
+                    </div>
+                    <button
+                        (click)="registroUsuario()"
+                        class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+                    >
+                        Registrarse
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ion-content>

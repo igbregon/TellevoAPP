@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ps-tellevoapp": {
+      "hosting": {
+        "app": [
+          "ps-tellevoapp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ps-tellevoapp"
+  }
+}
