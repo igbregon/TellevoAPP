@@ -5,6 +5,8 @@ import { AlertaService } from '../alertas/alerta.service';
 import { NavController } from '@ionic/angular';
 import { UsuarioService } from '../almacenamiento/usuarios/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
+import { VehiculoService } from '../almacenamiento/vehiculos/vehiculo.service';
+import { Vehiculo } from 'src/app/models/vehiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +18,21 @@ export class AutenticacionService {
     apellido: '',
     correo: '',
   }
+  private vehiculoSeleccionado:Vehiculo = {
+    marca: '',
+    modelo: '',
+    anno: 0,
+    patente: '',
+    img: '',
+    usuariocorreo: '',
+  }
 
   constructor(
     private auth: AngularFireAuth,
     private router: Router,
     private servicioAlertas: AlertaService,
     private servicioUsuario: UsuarioService,
+    private servicioVehiculo: VehiculoService,
     private navController: NavController,
   ) { }
   // Iniciar sesión
@@ -41,17 +52,6 @@ export class AutenticacionService {
     }
   }
 
-  // Obtener usuario actual
-  async userLogged(){
-    const user = await this.auth.currentUser;
-    if (user?.email) {
-      const infoUsuario = await this.servicioUsuario.getUserByEmail(user.email);
-      if (infoUsuario != null) {
-        this.usuario = infoUsuario;
-      }
-    }
-    return this.usuario;
-  }
 
   // Cerrar sesión
   async signOut(){
@@ -108,6 +108,34 @@ export class AutenticacionService {
         this.router.navigateByUrl('menu-principal/' + user.email)
       }
     })
+  }
+  
+  // Obtener usuario actual
+  async userLogged(){
+    const user = await this.auth.currentUser;
+    if (user?.email) {
+      const infoUsuario = await this.servicioUsuario.getUserByEmail(user.email);
+      if (infoUsuario != null) {
+        this.usuario = infoUsuario;
+      }
+    }
+    return this.usuario;
+  }
+
+  // Obtener vehiculos del usuario actual
+  async getUserVehicles(){
+    const usuarioActual = await this.userLogged();
+    const vehiculos = await this.servicioVehiculo.getVehiclesByEmail(usuarioActual.correo);
+    return vehiculos;
+  }
+
+  async setSelectedVehicle(vehiculo:Vehiculo){
+    this.vehiculoSeleccionado = vehiculo;
+    console.log("Vehiculo seleccionado Servicio: ", this.vehiculoSeleccionado);
+  }
+
+  async getSelectedVehicle(){
+    return this.vehiculoSeleccionado;
   }
 
 }

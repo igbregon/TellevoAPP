@@ -62,6 +62,11 @@ export class VehiculoService {
     return vehicles.find(vehicle => vehicle.usuariocorreo === correo);
   }
 
+  async getVehiclesByEmail(correo:string){
+    const vehicles = await this.getVehicle();
+    return vehicles.filter(vehicle => vehicle.usuariocorreo === correo);
+  }
+
   //Obtener vehiculo por patente
   async getVehicleByPatente(patente:string){
     const vehicles = await this.getVehicle();

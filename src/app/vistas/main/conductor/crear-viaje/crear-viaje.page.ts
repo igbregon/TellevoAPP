@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Vehiculo } from 'src/app/models/vehiculo';
+import { VehiculoService } from 'src/app/services/almacenamiento/vehiculos/vehiculo.service';
 import { AutenticacionService } from 'src/app/services/autenticacion/autenticacion.service';
 
 @Component({
@@ -9,9 +11,19 @@ import { AutenticacionService } from 'src/app/services/autenticacion/autenticaci
 })
 export class CrearViajePage implements OnInit {
 
+  vehiculo: Vehiculo = {
+    marca: '',
+    modelo: '',
+    anno: 0,
+    patente: '',
+    img: '',
+    usuariocorreo: '',
+  }
+
   constructor(
     private servicioAutenticacion:AutenticacionService,
     private router:Router,
+    private servicioVehiculo:VehiculoService,
   ) { }
 
   n1: number | undefined;
@@ -19,6 +31,7 @@ export class CrearViajePage implements OnInit {
   resultado: number | undefined;
 
   ngOnInit() {
+    this.mostrarVehiculo();
   }
 
   volverAlMenu(){
@@ -31,6 +44,20 @@ export class CrearViajePage implements OnInit {
 
   seleccionarVehiculo(){
     this.router.navigateByUrl("selccionar-vehiculo");
+  }
+
+  async mostrarVehiculo(){
+/*     await this.servicioAutenticacion.getSelectedVehicle().then(vehiculo => {
+      if (vehiculo != null) {
+        this.vehiculo = vehiculo;
+        console.log("Vehiculo actual: ", this.vehiculo);
+      }
+    }); */
+    const vehiculoActual = await this.servicioAutenticacion.getSelectedVehicle();
+    if (vehiculoActual != null) {
+      this.vehiculo = vehiculoActual;
+      console.log("Vehiculo actual: ", this.vehiculo);
+    }
   }
 
   calcularMultiplicacion(){
