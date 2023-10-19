@@ -5,6 +5,7 @@ import type { Animation } from '@ionic/angular';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/almacenamiento/usuarios/usuario.service';
 import { AutenticacionService } from 'src/app/services/autenticacion/autenticacion.service';
+import { Device } from '@capacitor/device';
 
 @Component({
   selector: 'app-menu-principal',
@@ -30,6 +31,7 @@ export class MenuPrincipalPage implements OnInit {
 
   ngOnInit() {
     this.infoUsuario();
+    this.capacitorDevice();
   }
 
   ionViewDidEnter(){
@@ -44,6 +46,11 @@ export class MenuPrincipalPage implements OnInit {
       .iterations(Infinity)
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
       .fromTo('opacity', '1', '0.2');
+  }
+
+  async capacitorDevice(){
+    const info = await Device.getInfo();
+    console.log(info);
   }
 
   async infoUsuario(){
