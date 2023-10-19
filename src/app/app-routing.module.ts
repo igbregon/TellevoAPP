@@ -55,6 +55,10 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: volverInicioSesion },
     loadChildren: () => import('./vistas/main/conductor/registrar-vehiculo/registrar-vehiculo.module').then( m => m.RegistrarVehiculoPageModule)
   },
+  {
+    path: 'info',
+    loadChildren: () => import('./modals/info/info.module').then( m => m.InfoPageModule)
+  },
 ];
 
 @NgModule({
