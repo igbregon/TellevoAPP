@@ -14,7 +14,6 @@ import { AutenticacionService } from 'src/app/services/autenticacion/autenticaci
 export class MenuPrincipalPage implements OnInit {
   private animation!: Animation;
   usuario: Usuario = {
-    id: 0,
     nombre: '',
     apellido: '',
     correo: '',
@@ -48,7 +47,11 @@ export class MenuPrincipalPage implements OnInit {
   }
 
   async infoUsuario(){
-    this.usuario = this.servicioUsuario.usuarioActual;
+    const usuarioActual = await this.servicioAutenticacion.userLogged();
+    if (usuarioActual!= null) {
+      this.usuario = usuarioActual;
+      console.log("Usuario actual: ",this.usuario);
+    }
   }
 
   async inicioSesion(){

@@ -1,13 +1,156 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>crear-viaje</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">crear-viaje</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="h-fit min-h-full dark:bg-slate-900">
+      <div class="h-full w-full">
+          <div class="bg-amarillo-ppal py-12">
+              <h1 class="text-center text-white font-sans font-bold text-4xl">
+                  Planificar Viaje
+              </h1>
+              <h2
+                  class="text-center text-white font-sans font-light italic mt-2"
+                  (click)="volverAlMenu()"
+              >
+                  volver
+              </h2>
+          </div>
+          <div class="mt-10 max-w-xl m-auto px-10">
+              <div class="my-6 py-4 px-2 bg-white rounded-2xl flex">
+                  <div
+                      class="bg-black rounded-2xl overflow-hidden aspect-1 max-h-28 justify-start"
+                  >
+                      <img
+                          class="object-cover h-full"
+                          src="https://img.remediosdigitales.com/4745f3/peugeot-508-2023-gris/1366_2000.jpeg"
+                          alt=""
+                      />
+                  </div>
+                  <div class="px-4">
+                      <p class="text-black font-medium text-sm">
+                          Marca: Peugeot
+                      </p>
+                      <p class="text-black font-medium text-sm">
+                          Modelo: 508
+                      </p>
+                      <p class="text-black font-medium text-sm">Año: 2023</p>
+                      <p class="text-black font-medium text-sm">
+                          Patente: HD3-249-AB4
+                      </p>
+                  </div>
+              </div>
+
+              <div class="relative flex items-center">
+                  <button
+                      (click)="seleccionarVehiculo()"
+                      class="w-2/4 bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold py-3"
+                  >
+                  <!-- No funciona de momento -->
+                      Seleccionar vehículo
+                  </button>
+                  <div class="mx-2"></div>
+                  <button
+                      (click)="registrarVehiculo()"
+                      class="w-2/4 bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold py-3"
+                  >
+                      Registrar vehículo
+                  </button>
+              </div>
+
+              <div class="relative flex items-center mt-8">
+                  <div class="border h-0 w-full border-stone-300"></div>
+              </div>
+
+              <div class="mt-4">
+                  <label for="" class="dark:text-white text-base font-bold"
+                      >Inicio:</label
+                  >
+                  <div
+                      class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                  >
+                      <input
+                          type="text"
+                          name="texto2"
+                          placeholder=""
+                          id=""
+                          class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                      />
+                  </div>
+              </div>
+
+              <div class="mt-4">
+                  <label for="" class="dark:text-white text-base font-bold"
+                      >Destino:</label
+                  >
+                  <div
+                      class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                  >
+                      <input
+                          type="text"
+                          name="texto2"
+                          placeholder=""
+                          id=""
+                          class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                      />
+                  </div>
+              </div>
+
+              <div class="mt-4">
+                  <label for="" class="dark:text-white text-base font-bold"
+                      >Asientos Disponibles:</label
+                  >
+                  <div
+                      class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                  >
+                      <input
+                          [(ngModel)]="n1"
+                          type="text"
+                          name="texto2"
+                          placeholder=""
+                          id=""
+                          class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                      />
+                  </div>
+              </div>
+
+              <div class="mt-4">
+                  <label for="" class="dark:text-white text-base font-bold"
+                      >Precio:</label
+                  >
+                  <div
+                      class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+                  >
+                      <input
+                          [(ngModel)]="n2"
+                          type="number"
+                          name="texto2"
+                          placeholder=""
+                          id=""
+                          class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+                      />
+                  </div>
+              </div>
+
+              <button
+                  (click)="calcularMultiplicacion()"
+                  class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+              >
+                  Calcular precio
+              </button>
+
+              <div class="mt-4">
+                  <p
+                      for=""
+                      class="dark:text-white text-base font-bold"
+                      *ngIf="resultado !== undefined"
+                  >
+                      Precio Viaje estimado: ${{ resultado }}
+                  </p>
+              </div>
+
+              <button
+                  class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+              >
+                  Publicar
+              </button>
+          </div>
+      </div>
+  </div>
 </ion-content>

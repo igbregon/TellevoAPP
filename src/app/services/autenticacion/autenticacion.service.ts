@@ -4,11 +4,18 @@ import { Router } from '@angular/router';
 import { AlertaService } from '../alertas/alerta.service';
 import { NavController } from '@ionic/angular';
 import { UsuarioService } from '../almacenamiento/usuarios/usuario.service';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
+
+  private usuario:Usuario = {
+    nombre: '',
+    apellido: '',
+    correo: '',
+  }
 
   constructor(
     private auth: AngularFireAuth,
@@ -22,8 +29,8 @@ export class AutenticacionService {
     try {
       this.servicioAlertas.showAlertNoButton("Validando Credenciales...","");
       await this.auth.signInWithEmailAndPassword(correo, contrasena);
-      this.servicioUsuario.usuarioActual = (await this.servicioUsuario.getUser()).filter(usuario => usuario.correo == correo)[0];
-      console.log(this.servicioUsuario.usuarioActual);
+      /* this.servcioUsuario.usuarioActual = (await this.servicioUsuario.getUser()).filter(usuario => usuario.correo == correo)[0]; */
+      /* console.log(this.servicioUsuario.usuarioActual); */
       setTimeout(() => {
         this.servicioAlertas.showAlert("Bienvenido a TeLlevoAPP.", "");
         this.router.navigateByUrl("menu-principal/" + correo);
@@ -32,6 +39,18 @@ export class AutenticacionService {
     } catch (error) {
       this.servicioAlertas.showAlert("Usuario/contraseña inválidos", "ERROR");
     }
+  }
+
+  // Obtener usuario actual
+  async userLogged(){
+    const user = await this.auth.currentUser;
+    if (user?.email) {
+      const infoUsuario = await this.servicioUsuario.getUserByEmail(user.email);
+      if (infoUsuario != null) {
+        this.usuario = infoUsuario;
+      }
+    }
+    return this.usuario;
   }
 
   // Cerrar sesión
@@ -78,12 +97,17 @@ export class AutenticacionService {
           this.servicioAlertas.showAlert("Hubo un error al crear la cuenta. Por favor, intenta de nuevo más tarde.", "ERROR");
       }
     });
-    
-    /* try {
-      await this.auth.createUserWithEmailAndPassword(correo, contrasena);
-      this.servicioAlertas.showAlert("Usuario registrado con éxito.", "Registro");
-    } catch (error) {
-      this.servicioAlertas.showAlert("Error al registrar el usuario.", "ERROR");
-    } */
   }
+
+  // Volver al menú principal
+  backToMenu(){
+    //this.navController.back();
+    this.auth.onAuthStateChanged(user => {
+      if (user) {
+        this.navController.setDirection('back');
+        this.router.navigateByUrl('menu-principal/' + user.email)
+      }
+    })
+  }
+
 }

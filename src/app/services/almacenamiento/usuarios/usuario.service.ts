@@ -8,13 +8,6 @@ const storageUsuario = "usuarioData";
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  private usuario: Usuario[] = [];
-  public usuarioActual: Usuario = {
-    nombre: '',
-    apellido: '',
-    correo: '',
-  }
   
   constructor() { }
 
@@ -32,9 +25,9 @@ export class UsuarioService {
     if (storageData == null) {
       return [];
     }
-    this.usuario = JSON.parse(storageData);
-    if (this.usuario) {
-      return this.usuario;
+    const data:Usuario[] = JSON.parse(storageData);
+    if (data) {
+      return data;
     }else{
       return [];
     }

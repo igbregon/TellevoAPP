@@ -1,13 +1,67 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>lista-viajes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lista-viajes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="h-fit min-h-full dark:bg-slate-900">
+        <div class="h-full w-full">
+            <div class="bg-amarillo-ppal py-12">
+                <h1 class="text-center text-white font-sans font-bold text-4xl">
+                    Viajes disponibles
+                </h1>
+                <h2
+                    class="text-center text-white font-sans font-light mt-2"
+                    (click)="volverAlMenu()"
+                >
+                    volver
+                </h2>
+            </div>
+            <div class="mt-10 max-w-xl m-auto">
+                <div class="mx-8">
+                    <div
+                        class="my-6 py-4 px-2 bg-white rounded-2xl flex"
+                        *ngFor="let vehiculo of vehiculos"
+                        (click)="seleccionarViaje(vehiculo.patente)"
+                    >
+                        <div
+                            class="bg-black rounded-2xl overflow-hidden aspect-1 max-h-28 justify-start"
+                        >
+                            <img
+                                class="object-cover h-full"
+                                src="{{vehiculo.img}}"
+                                alt="imagen del vehículo"
+                            />
+                        </div>
+                        <div class="px-4">
+                            <p class="text-black font-medium text-sm">
+                                Conductor:
+                            </p>
+                            <p class="text-black font-medium text-sm">
+                                Marca: {{vehiculo.marca}}
+                            </p>
+                            <p class="text-black font-medium text-sm">
+                                Modelo: {{vehiculo.modelo}}
+                            </p>
+                            <p class="text-black font-medium text-sm">
+                                Patente: {{vehiculo.patente}}
+                            </p>
+                            <p class="text-black font-medium text-sm">
+                                Destino: ???
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="my-4">
+                        <div class="relative flex items-center mt-8 m">
+                            <div
+                                class="border h-0 w-full border-stone-300"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+                    >
+                        Selecciona un vehículo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </ion-content>

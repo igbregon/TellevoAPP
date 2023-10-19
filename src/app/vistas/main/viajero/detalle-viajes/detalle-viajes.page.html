@@ -1,13 +1,77 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detalle-viajes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle-viajes</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <div class="h-fit min-h-full dark:bg-slate-900">
+      <div class="h-full w-full">
+          <div class="bg-amarillo-ppal py-12">
+              <h1 class="text-center text-white font-sans font-bold text-4xl">
+                  Detalle del viajes
+              </h1>
+              <h2
+                  class="text-center text-white font-sans font-light mt-2"
+                  (click)="volverListaViajes()"
+              >
+                  volver
+              </h2>
+          </div>
+
+          <div class="mt-10 max-w-xl m-auto">
+              <div class="mx-8">
+                  <div class="my-6 py-4 px-2 bg-white rounded-2xl flex">
+                      <div
+                          class="bg-gray-400 rounded-2xl overflow-hidden aspect-1 max-h-28 justify-start"
+                      >
+                          <img
+                              class="object-cover h-full"
+                              src="{{vehiculo.img}}"
+                              alt=""
+                          />
+                      </div>
+                      <div class="px-4">
+                          <p class="text-black font-medium text-sm">
+                              Marca: {{vehiculo.marca}}</p>
+                          <p class="text-black font-medium text-sm">
+                              Modelo: {{vehiculo.modelo}}
+                          </p>
+                          <p class="text-black font-medium text-sm">
+                              Año: {{vehiculo.anno}}</p>
+                          <p class="text-black font-medium text-sm">
+                              Patente: {{vehiculo.patente}}
+                          </p>
+                      </div>
+                  </div>
+
+                  <div class="mx-0 px-1 py-2 bg-white rounded-xl">
+                      <p class="text-black px-4 py-1">Ruta:</p>
+                      <div
+                          class="px-2 py-2 rounded-xl overflow-hidden aspect-1"
+                      >
+                          <iframe
+                              class="object-cover h-full w-full"
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.049828297312!2d-70.61886772395245!3d-33.500080700056344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d00be4a5fa81%3A0xcd8eaf5b1d547f64!2sDuoc%20UC%3A%20Sede%20San%20Joaqu%C3%ADn!5e0!3m2!1ses!2scl!4v1694097990216!5m2!1ses!2scl"
+                              width="400"
+                              height="300"
+                              style="border: 0"
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"
+                          ></iframe>
+                      </div>
+                  </div>
+
+                  <div class="my-4">
+                      <div class="relative flex items-center mt-8 m">
+                          <div
+                              class="border h-0 w-full border-stone-300"
+                          ></div>
+                      </div>
+                  </div>
+
+                  <button
+                      class="bg-amarillo-ppal rounded-2xl shadow text-center text-white text-2xl font-semibold w-full py-3 mt-2"
+                  >
+                      Pagar
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</ion-content> 
