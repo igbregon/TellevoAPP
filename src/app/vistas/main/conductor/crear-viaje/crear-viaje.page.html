@@ -1,155 +1,158 @@
 <ion-content [fullscreen]="true">
-    <div class="h-fit min-h-full dark:bg-slate-900">
-        <div class="h-full w-full">
-            <div class="bg-amarillo-ppal py-12">
-                <h1 class="text-center text-white font-sans font-bold text-4xl">
-                    Planificar Viaje
-                </h1>
-                <h2
-                    class="text-center text-white font-sans font-light italic mt-2"
-                    (click)="volverAlMenu()"
-                >
-                    volver
-                </h2>
-            </div>
-            <div class="mt-10 max-w-xl m-auto px-10">
-                <div class="my-6 py-4 px-2 bg-white rounded-2xl flex">
-                    <div
-                        class="bg-black rounded-2xl overflow-hidden aspect-1 max-h-28 justify-start"
-                    >
-                        <img
-                            class="object-cover h-full"
-                            src={{vehiculo.img}}
-                            alt=""
-                        />
-                    </div>
-                    <div class="px-4">
-                        <p class="text-black font-medium text-sm">
-                            Marca: {{vehiculo.marca}}
-                        </p>
-                        <p class="text-black font-medium text-sm">
-                            Modelo: {{vehiculo.modelo}}
-                        </p>
-                        <p class="text-black font-medium text-sm">Año: 2023</p>
-                        <p class="text-black font-medium text-sm">
-                            Patente: {{vehiculo.patente}}
-                        </p>
-                    </div>
-                </div>
+<div class="h-fit min-h-full dark:bg-slate-900">
+    <div class="h-full w-full">
+    <div class="bg-amarillo-ppal py-12">
+        <h1 class="text-center text-white font-sans font-bold text-4xl">
+        Planificar Viaje
+        </h1>
+        <h2
+        class="text-center text-white font-sans font-light italic mt-2"
+        (click)="volverAlMenu()"
+        >
+        volver
+        </h2>
+    </div>
+    </div>
 
-                <div class="relative flex items-center">
-                    <button
-                        (click)="seleccionarVehiculo()"
-                        class="w-2/4 bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold py-3"
-                    >
-                        Seleccionar vehículo
-                    </button>
-                    <div class="mx-2"></div>
-                    <button
-                        (click)="registrarVehiculo()"
-                        class="w-2/4 bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold py-3"
-                    >
-                        Registrar vehículo
-                    </button>
-                </div>
-
-                <div class="relative flex items-center mt-8">
-                    <div class="border h-0 w-full border-stone-300"></div>
-                </div>
-
-                <div class="mt-4">
-                    <label for="" class="dark:text-white text-base font-bold"
-                        >Inicio:</label
-                    >
-                    <div
-                        class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
-                    >
-                        <input
-                            type="text"
-                            name="texto2"
-                            placeholder=""
-                            id=""
-                            class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
-                        />
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <label for="" class="dark:text-white text-base font-bold"
-                        >Destino:</label
-                    >
-                    <div
-                        class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
-                    >
-                        <input
-                            type="text"
-                            name="texto2"
-                            placeholder=""
-                            id=""
-                            class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
-                        />
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <label for="" class="dark:text-white text-base font-bold"
-                        >Asientos Disponibles:</label
-                    >
-                    <div
-                        class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
-                    >
-                        <input
-                            [(ngModel)]="n1"
-                            type="text"
-                            name="texto2"
-                            placeholder=""
-                            id=""
-                            class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
-                        />
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <label for="" class="dark:text-white text-base font-bold"
-                        >Precio:</label
-                    >
-                    <div
-                        class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
-                    >
-                        <input
-                            [(ngModel)]="n2"
-                            type="number"
-                            name="texto2"
-                            placeholder=""
-                            id=""
-                            class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
-                        />
-                    </div>
-                </div>
-
-                <button
-                    (click)="calcularMultiplicacion()"
-                    class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
-                >
-                    Calcular precio
-                </button>
-
-                <div class="mt-4">
-                    <p
-                        for=""
-                        class="dark:text-white text-base font-bold"
-                        *ngIf="resultado !== undefined"
-                    >
-                        Precio Viaje estimado: ${{ resultado }}
-                    </p>
-                </div>
-
-                <button
-                    class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
-                >
-                    Publicar
-                </button>
-            </div>
+    <div class="mt-10 max-w-xl m-auto px-10">
+    <div class="my-6 py-4 px-2 bg-white rounded-2xl flex">
+        <div class="bg-black rounded-2xl overflow-hidden aspect-1 max-h-28 justify-start">
+        <img
+            class="object-cover h-full"
+            [src]="vehiculo.img"
+            alt=""
+        />
+        </div>
+        <div class="px-4">
+        <p class="text-black font-medium text-sm">
+            Marca: {{ vehiculo.marca }}
+        </p>
+        <p class="text-black font-medium text-sm">
+            Modelo: {{ vehiculo.modelo }}
+        </p>
+        <p class="text-black font-medium text-sm">Año: 2023</p>
+        <p class="text-black font-medium text-sm">
+            Patente: {{ vehiculo.patente }}
+        </p>
         </div>
     </div>
+
+    <div class="relative flex items-center">
+        <button
+        (click)="seleccionarVehiculo()"
+        class="w-2/4 bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold py-3"
+        >
+        Seleccionar vehículo
+        </button>
+        <div class="mx-2"></div>
+        <button
+        (click)="registrarVehiculo()"
+        class="w-2/4 bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold py-3"
+        >
+        Registrar vehículo
+        </button>
+    </div>
+
+    <div class="relative flex items-center mt-8">
+        <div class="border h-0 w-full border-stone-300"></div>
+    </div>
+
+    <div class="mt-4">
+        <label for="" class="dark:text-white text-base font-bold"
+        >Inicio:</label
+        >
+        <div
+        class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg"
+        >
+        <input
+            type="text"
+            name="texto2"
+            placeholder=""
+            id=""
+            class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+        />
+        </div>
+    </div>
+
+    <!-- Appi -->
+    <select
+        (change)="cargarComuna()"
+        [(ngModel)]="regionSeleccionado"
+        class="form-select form-select-lg mt-4"
+        aria-label="Large select example"
+    >
+        <option [value]="i.id" *ngFor="let i of regiones">{{ i.nombre }}</option>
+    </select>
+    <select [(ngModel)]="comunaSeleccionada" class="form-select form-select-lg mt-4" aria-label="Large select example">
+        <option [value]="i.id" *ngFor="let i of comunas">{{ i.nombre }}</option>
+    </select>
+    <!-- Fin appi -->
+
+    <div class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg">
+        <input
+        type="text"
+        name="texto2"
+        placeholder=""
+        id=""
+        class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+        />
+    </div>
+
+    <div class="mt-4">
+        <label for="" class="dark:text-white text-base font-bold"
+        >Asientos Disponibles:</label
+    >
+    <div class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg">
+        <input
+        [(ngModel)]="n1"
+        type="text"
+        name="texto2"
+        placeholder=""
+        id=""
+        class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+        />
+    </div>
+    </div>
+
+    <div class="mt-4">
+    <label for="" class="dark:text-white text-base font-bold"
+        >Precio:</label
+    >
+    <div class="flex my-3 items-center justify-between bg-zinc-100 rounded-lg">
+        <input
+        [(ngModel)]="n2"
+        type="number"
+        name="texto2"
+        placeholder=""
+        id=""
+        class="w-full dark:text-white placeholder:text-neutral-600 dark:bg-zinc-950 px-4 bg-transparent outline-none rounded-lg"
+        />
+    </div>
+    </div>
+
+    <button
+    (click)="calcularMultiplicacion()"
+    class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+    >
+    Calcular precio
+    </button>
+
+    <div class="mt-4">
+    <p
+        for=""
+        class="dark:text-white text-base font-bold"
+        *ngIf="resultado !== undefined"
+    >
+        Precio Viaje estimado: ${{ resultado }}
+    </p>
+    </div>
+
+    <button
+    class="bg-amarillo-ppal rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9"
+    >
+    Publicar
+    </button>
+</div>
+</div>
 </ion-content>
+  

@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { Vehiculo } from 'src/app/models/vehiculo';
 import { VehiculoService } from 'src/app/services/almacenamiento/vehiculos/vehiculo.service';
 import { AutenticacionService } from 'src/app/services/autenticacion/autenticacion.service';
+import { Comuna } from 'src/app/models/comuna';
+import { Region } from 'src/app/models/region';
+import { LocationService } from 'src/app/services/location/location.service';
+
 
 @Component({
   selector: 'app-crear-viaje',
@@ -18,12 +22,20 @@ export class CrearViajePage implements OnInit {
     patente: '',
     img: '',
     usuariocorreo: '',
+    
+    
   }
+  
+    regiones:Region[]=[];
+    comunas:Comuna[]=[];
+    regionSeleccionado:number = 0;
+    comunaSeleccionada:number = 0;
 
   constructor(
     private servicioAutenticacion:AutenticacionService,
     private router:Router,
     private servicioVehiculo:VehiculoService,
+    private locationService:LocationService
   ) { }
 
   n1: number | undefined;
@@ -32,6 +44,17 @@ export class CrearViajePage implements OnInit {
 
   ngOnInit() {
     this.mostrarVehiculo();
+  }
+
+  async cargarRegion(){
+    const req = await this.locationService.getRegion();
+    this.regiones = req.data;
+    console.log("REGION",this.regiones);
+  }
+
+  async cargarComuna(){
+    const req = await this.locationService.getComuna(this.regionSeleccionado);
+    this.comunas = req.data;
   }
 
   volverAlMenu(){
