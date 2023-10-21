@@ -12,17 +12,14 @@ const routes: Routes = [
   },
   {
     path: 'inicio-sesion',
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: volverInicioSesion },
     loadChildren: () => import('./vistas/login/inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
   },
   {
     path: 'registro',
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: volverInicioSesion },
     loadChildren: () => import('./vistas/login/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
     path: 'recuperar-contrasena',
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: volverInicioSesion },
     loadChildren: () => import('./vistas/login/recuperar-contrasena/recuperar-contrasena.module').then( m => m.RecuperarContrasenaPageModule)
   },
   {
