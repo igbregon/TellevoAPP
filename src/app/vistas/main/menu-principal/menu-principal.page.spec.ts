@@ -5,7 +5,7 @@ describe('MenuPrincipalPage', () => {
   let component: MenuPrincipalPage;
   let fixture: ComponentFixture<MenuPrincipalPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(MenuPrincipalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
