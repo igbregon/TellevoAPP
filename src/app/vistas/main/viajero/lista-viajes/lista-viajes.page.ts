@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Vehiculo } from 'src/app/models/vehiculo';
 import { VehiculoService } from 'src/app/services/almacenamiento/vehiculos/vehiculo.service';
 import { AutenticacionService } from 'src/app/services/autenticacion/autenticacion.service';
@@ -15,7 +15,7 @@ export class ListaViajesPage implements OnInit {
 
   constructor(
     private router:Router,
-    private activatedRoute:ActivatedRoute,
+    
     private servicioVehiculo:VehiculoService,
     private servicioAutenticacion:AutenticacionService,
   ) { }
