@@ -30,4 +30,5 @@ export const environment = {
     messagingSenderId: "311134375389",
     appId: "1:311134375389:web:aa1704fa666fc12ccf3a34"
   },
+  apiUrl: "https://dev.matiivilla.cl/duoc/location/"
 };
